@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Radio from '@material-ui/core/Radio';
-import {DataGrid} from '@material-ui/data-grid';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Radio from '@mui/material/Radio';
+import {DataGrid} from '@mui/x-data-grid';
 import {SEMESTER_LIST} from '../constants.js'
 
 // user selects from a list of  (year, semester) values

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
 
 // properties addCoure is required, function called when Add clicked.
 class AddCourse extends Component {
@@ -40,8 +41,8 @@ class AddCourse extends Component {
             </Button>
             <Dialog open={this.state.open} onClose={this.handleClose}>
                 <DialogTitle>Add Course</DialogTitle>
-                <DialogContent>
-                  <TextField autoFocus fullWidth label="Course Id" name="course_id" onChange={this.handleChange}/> 
+                <DialogContent  style={{paddingTop: 20}} >
+                  <TextField autoFocus fullWidth label="Course Id" name="course_id" onChange={this.handleChange}  /> 
                 </DialogContent>
                 <DialogActions>
                   <Button color="secondary" onClick={this.handleClose}>Cancel</Button>
