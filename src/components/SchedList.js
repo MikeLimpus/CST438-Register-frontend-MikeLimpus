@@ -6,6 +6,7 @@ import {SERVER_URL} from '../constants.js'
 import Grid from '@mui/material/Grid';
 import {DataGrid} from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -167,7 +168,9 @@ class SchedList extends Component {
             </div>
             <Grid container>
               <Grid item>
+			    <ButtonGroup>
                   <AddCourse addCourse={this.addCourse}  />
+				</ButtonGroup>
               </Grid>
             </Grid>
             <div style={{ height: 400, width: '100%' }}>
