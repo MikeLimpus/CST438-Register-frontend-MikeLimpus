@@ -19,8 +19,8 @@ class Semester extends Component {
     constructor(props) {
       super(props);
       this.state = {selected: SEMESTER_LIST.length-1,
-                  student_email : {},
-                  student_name : {}
+                  student_email : "",
+                  student_name : ""
                 };
     }
  
@@ -29,50 +29,53 @@ class Semester extends Component {
     this.setState({selected: event.target.value});
   }
   
-  handleClickOpen = () => {
-    this.setState( {open:true} );
-  };
+  // handleClickOpen = () => {
+  //   this.setState( {open:true} );
+  // };
 
-  handleClose = () => {
-    this.setState( {open:false} );
-  };
+  // handleClose = () => {
+  //   this.setState( {open:false} );
+  // };
 
-  handleEmailChange = (event) => {
-    this.setState({student_email: event.target.value});
-  }
+  // handleEmailChange = (event) => {
+  //   this.setState({student_email: event.target.value});
+  // }
 
-  handleNameChange = (event) => {
-    this.setState({student_name: event.target.value});
-  }
+  // handleNameChange = (event) => {
+  //   this.setState({student_name: event.target.value});
+  // }
 
-  handleAdd = () => {
-    const token = Cookies.get('XSRF-TOKEN');
-    console.log("Email " + this.state.student_email);
-    console.log(this.state.student_name);
-    //toast.success("Hi")
-    fetch(`localhost:8080/addStudent`, // This line will need to change depending on the backend
-      {
-        method: 'POST',
-        headers: {  'Content-Type': 'application/json',
-                  'X-XSRF-TOKEN' : token   },
-        body: JSON.stringify({student_email: this.state.student_email,
-                              student_name: this.state.student_name})
-      }
-    )
-    .then(res => {
-      if(res.ok) {
-        toast.success(`${this.state.student_name} added`, {position: toast.POSITION.BOTTOM_CENTER});
-      }
-      else {
-        toast.error("Failed adding student", {position: toast.POSITION.BOTTOM_CENTER});
-      }
-    })   
-    .catch(err => {
-      toast.error("Failed adding student", {position: toast.POSITION.BOTTOM_CENTER});
-    })
-     //this.props.addStudent(this.state.student);
-     this.handleClose();
-  }
+  // handleAdd = () => {
+  //   const token = Cookies.get('XSRF-TOKEN');
+  //   console.log("Email " + this.state.student_email);
+  //   console.log(this.state.student_name);
+  //   console.log({ email: this.state.student_email,
+  //     name: this.state.student_name });
+  //   console.log(token)
+  //   fetch(`http://localhost:8080/addStudent`, // This line will need to change depending on the backend
+  //     {
+  //       method: 'POST',
+  //       headers: {  'X-XSRF-TOKEN' : token, 'Content-Type': 'application/json'},
+  //       body: JSON.stringify({ email: this.state.student_email,
+  //               name: this.state.student_name }),
+  //       params: JSON.stringify({ email: this.state.student_email,
+  //         name: this.state.student_name })
+  //     }
+  //   )
+  //   .then(res => {
+  //     if(res.ok) {
+  //       toast.success(`${this.state.student_name} added`, {position: toast.POSITION.TOP_CENTER});
+  //     }
+  //     else {
+  //       toast.error("Failed adding student", {position: toast.POSITION.TOP_CENTER});
+  //     }
+  //   })   
+  //   .catch(err => {
+  //     toast.error("Failed adding student", {position: toast.POSITION.TOP_CENTER});
+  //   })
+  //    //this.props.addStudent(this.state.student);
+  //    this.handleClose();
+  // }
 
 
   render() {    
@@ -117,11 +120,14 @@ class Semester extends Component {
                 variant="outlined" color="primary" style={{margin: 10}}>
                 Get Schedule
               </Button>
-              <Button variant="outlined" color="primary" style={{margin: 10}} onClick={this.handleClickOpen}>
+              <Button
+              component={Link}
+              to={{pathname:'/addStudent'}}
+              variant="outlined" color="primary" style={{margin: 10}}>
               Add Student
             </Button>
             
-            <Dialog open={this.state.open} onClose={this.handleClose}>
+            {/* <Dialog open={this.state.open} onClose={this.handleClose}>
                 <DialogTitle>Add Student</DialogTitle>
                 <DialogContent  style={{paddingTop: 20}} >
                   <TextField autoFocus fullWidth label="Student Name" name="student_name" onChange={this.handleNameChange}  /> 
@@ -134,7 +140,7 @@ class Semester extends Component {
                   >Add
                   </Button>
                 </DialogActions>
-              </Dialog>      
+              </Dialog>       */}
 
           </div>
       </div>
