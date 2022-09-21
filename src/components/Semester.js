@@ -14,7 +14,6 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
-
 // user selects from a list of  (year, semester) values
 class Semester extends Component {
     constructor(props) {
@@ -47,9 +46,10 @@ class Semester extends Component {
   }
 
   handleAdd = () => {
-    console.log(this.state.student_email);
-    console.log(this.state.student_name);
     const token = Cookies.get('XSRF-TOKEN');
+    console.log("Email " + this.state.student_email);
+    console.log(this.state.student_name);
+    //toast.success("Hi")
     fetch(`localhost:8080/addStudent`, // This line will need to change depending on the backend
       {
         method: 'POST',
